@@ -1,0 +1,2 @@
+1. enumerate  循环获取序号
+2. lambda     "command" 传参数
