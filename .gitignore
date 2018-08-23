@@ -1,0 +1,6 @@
+/.idea/*
+.settings/*
+.project
+.buildpath
+libs/__pycache__
+
