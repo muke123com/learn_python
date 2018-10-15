@@ -14,11 +14,11 @@ class Pic(object):
         self.count = 0
         self.post_data = {}
         self.str = ''
-        self.data_url = 'https://booru.io/api/query/entity'
-        self.pic_base = 'https://booru.io/data/'
+        self.data_url = ''
+        self.pic_base = ''
         self.files_folder = 'D:/PycharmProjects/images/'
         self.session = requests.session()
-        self.search_key = "yuri femdom"
+        self.search_key = ""
 
         self.db = pymysql.connect(host='localhost', user='root', password='123456', port=3306, db='m_learn')
         self.cursor = self.db.cursor()
