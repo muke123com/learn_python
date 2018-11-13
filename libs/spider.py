@@ -80,7 +80,7 @@ class Blibli(object):
         self.author_url = 'https://api.bilibili.com/x/relation/stat'
         self.session = requests.session()
 
-        self.db = pymysql.connect(host='localhost', user='python', password='123456', port=3306, db='m_test')
+        self.db = pymysql.connect(host='localhost', user='root', password='123456', port=3306, db='m_learn')
         self.cursor = self.db.cursor()
 
         # 爬取参数
@@ -160,14 +160,14 @@ class Blibli(object):
         pass
 
     def run(self):
-        # for i in range(1):
-        #     self.getVideo(i)
+        for i in range(1):
+            self.getVideo(i)
 
-        for i in range(1000):
-            print(i)
-            mid = 9717470 + i
-            if self.getAuthorId(mid) == False:
-                break
+        # for i in range(1000):
+        #     print(i)
+        #     mid = 9717470 + i
+        #     if self.getAuthorId(mid) == False:
+        #         break
 
         self.db.close()
     pass
