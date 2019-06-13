@@ -40,12 +40,12 @@ class Steam(object):
         pass
 
     def get_data(self):
-        r = requests.get(self.url, data=self.payload, headers=self.headers);
-        r.encoding = "utf-8"
+        r = requests.get(self.url, data=self.payload, headers=self.headers)
+        text = r.content.decode("utf-8")
         # res = json.loads(r.text);
         # el = '<div class="margin-fix" id="list_videos_recommended_videos_items">23213123</div>';
 
-        element = etree.HTML(r.text)
+        element = etree.HTML(text)
 
         el_list = element.xpath('//div[@id="search_result_container"]/div/a')
 
@@ -72,21 +72,21 @@ class Steam(object):
             
             if(len(game_id) != 0):
                 sql_item = {}
-                sql_item['name'] = name;
-                sql_item['discount'] = discount;
-                sql_item['image'] = image;
-                sql_item['href'] = href;
-                sql_item['game_id'] = game_id;
-                sql_item['price'] = price;
-                sql_item['new_price'] = new_price;
+                sql_item['name'] = name.decode('utf-8')
+                sql_item['discount'] = discount
+                sql_item['image'] = image
+                sql_item['href'] = href
+                sql_item['game_id'] = game_id
+                sql_item['price'] = price
+                sql_item['new_price'] = new_price
 
                 sql_data.append(sql_item)
 
                 pass
-            # print(name)
-            pass;
+            print(name)
+            pass
         self.save_data(sql_data)
-        print ('result is: ', len(sql_data));
+        print ('result is: ', len(sql_data))
 
     def save_data(self, sql_data):
         table = 'm_steam'
