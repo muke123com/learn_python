@@ -1,10 +1,10 @@
-#-*-coding:utf-8-*-
+# -*-coding:utf-8-*-
 import requests
 import json
 import lxml.html
 import pymysql
-etree = lxml.html.etree
 
+etree = lxml.html.etree
 
 
 class Steam(object):
@@ -23,8 +23,9 @@ class Steam(object):
             'cache-control': "no-cache"
         }
         self.payload = {
-            'filter':'topsellers',
-            'os':'win'
+            'filter': 'topsellers',
+            'os': 'win',
+            'page': 2
         }
 
         self.count = 0
@@ -39,8 +40,9 @@ class Steam(object):
 
         pass
 
-    def get_data(self):
-        r = requests.get(self.url, data=self.payload, headers=self.headers)
+    def get_data(self, page):
+        self.payload['page'] = page
+        r = requests.get(self.url, params=self.payload, headers=self.headers)
         text = r.content.decode("utf-8")
         # res = json.loads(r.text);
         # el = '<div class="margin-fix" id="list_videos_recommended_videos_items">23213123</div>';
@@ -61,7 +63,7 @@ class Steam(object):
             game_id = el.xpath('./@data-ds-appid')
             discount = el.xpath('.//div[@class="col search_discount responsive_secondrow"]/span/text()')
 
-            if(len(discount) != 0):
+            if len(discount) != 0:
                 price = el.xpath('.//strike/text()')
                 discount = discount[0]
             else:
@@ -69,33 +71,28 @@ class Steam(object):
                 discount = 0
                 pass
             new_price = el.xpath('.//div/@data-price-final')[0]
-            
-            if(len(game_id) != 0):
-                sql_item = {}
-                sql_item['name'] = name.decode('utf-8')
-                sql_item['discount'] = discount
-                sql_item['image'] = image
-                sql_item['href'] = href
-                sql_item['game_id'] = game_id
-                sql_item['price'] = price
-                sql_item['new_price'] = new_price
+
+            if len(game_id) != 0:
+                sql_item = {'name': name, 'discount': discount, 'image': image, 'href': href, 'game_id': str(game_id),
+                            'price': str(price), 'new_price': new_price}
 
                 sql_data.append(sql_item)
 
                 pass
-            print(name)
+            # print(game_id, price)
             pass
         self.save_data(sql_data)
-        print ('result is: ', len(sql_data))
+        print('result is: ', len(sql_data))
 
     def save_data(self, sql_data):
+        print("保存到数据库")
         table = 'm_steam'
         data = sql_data[0]
         keys = ', '.join(data.keys())
         values = ','.join(['%s'] * len(data))
-        sql = 'INSERT INTO {table}({keys}) VALUES ({values}) ON DUPLICATE KEY UPDATE'.format(table=table, keys=keys,
-                                                                                             values=values)
-        update = ', '.join([" {key} = VALUES({key})".format(key=key) for key in data])
+        sql = r'INSERT INTO {table}({keys}) VALUES ({values}) ON DUPLICATE KEY UPDATE'.format(table=table, keys=keys,
+                                                                                              values=values)
+        update = r', '.join([" {key} = VALUES({key})".format(key=key) for key in data])
         sql += update
         tuple_list = []
         for data in sql_data:
@@ -109,6 +106,6 @@ class Steam(object):
             self.db.rollback()
         pass
 
-if __name__ == '__main__':
-    s = Steam()
-    s.get_data()
+# if __name__ == '__main__':
+#     s = Steam()
+#     s.get_data()
