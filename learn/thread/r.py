@@ -4,6 +4,7 @@ import queue
 import scripts.steam as steam
 
 
+# 多线程爬取数据
 class MyThread(threading.Thread):
     def __init__(self, thread_id, p):
         threading.Thread.__init__(self)
@@ -17,7 +18,6 @@ class MyThread(threading.Thread):
 
 
 def process_data(p):
-    print(p)
     s = steam.Steam()
     s.get_data(p)
     pass
