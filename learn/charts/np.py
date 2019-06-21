@@ -1,19 +1,45 @@
 import numpy as np
-import xlwings as xw
+import operator
 
-a1 = np.arange(24)
-a2 = a1.reshape(4, 6)
 
-a3 = np.zeros(5, dtype=int)
-a4 = np.logspace(1.0, 2.0, num=10, base=10)
+# numbers = np.array([1, 2, 3, 4])
+# print(numbers)
+# print(numbers.dtype)  # 类型统一
+# print(numbers == 2)
+#
+# isTwo = (numbers == 2)
+# print(numbers[isTwo])
+#
+# matrix = np.array([
+#     [5, 10, 15],
+#     [15, 20, 25],
+#     [25, 30, 35],
+# ])
+#
+# sc_25 = (matrix[:, 2] == 25)
+# print(sc_25)
+# print(matrix[sc_25, :])
+#
+# numbers = numbers.astype(float)
+# print(numbers.dtype)
+# print(numbers)
+#
+# print(matrix.sum())
+# print(matrix.sum(axis=1))  # 对行求和
+# print(matrix.sum(axis=0))  # 对列求和
+# print(np.sqrt(matrix))  # 平方根
 
-a5 = a1[2: 18: 3]  # 切片
+# # 矩阵
+# r_arr = np.random.rand(2, 2)
+# r_mat = np.mat(r_arr)   # 数组转矩阵
+# print(r_mat)
+# print('***********************************')
+# print(r_mat.I)          # 矩阵求逆
+# print('***********************************')
+# print(r_mat * r_mat.I)
+# print(np.eye(2))        # 创建单位矩阵
 
-s = a5
-print(s)
-
-wb = xw.Book(r'C:\Users\Administrator\Desktop\py1.xlsx')
-sht = wb.sheets[0]  # 第一个sheet, 也可以通过名字获取
-sht.clear()
-sht.range('A1').value = s
+# group = np.array([[1.0, 1.1], [1.0, 1.0], [0, 0.1]])
+# print(group.shape[0])
+# print(np.tile([0,0], (group.shape[0], 1))-group)
 
