@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>委托书</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+        }
+        input[type=text] {
+            padding: 5px;
+            width: 300px;
+            height: 1.2em;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            vertical-align: bottom;
+            outline: none;
+        }
+        .conatiner {
+            margin: 0 auto;
+            padding: 70px 50px;
+            width: 1000px;
+        }
+        .conatiner h1 {
+            margin-bottom: 70px;
+            font-size: 40px;
+            text-align: center;
+        }
+        .top {
+            margin-bottom: 30px;
+            font-size: 20px;
+            line-height: 2em;
+            text-indent: 3em;
+        }
+        .top input {
+            text-align: center;
+        }
+        .list .item {
+            display: inline-block;
+            margin-right: 1%;
+            width: 49%;
+            vertical-align: top;
+        }
+        .list .item:last-of-type {
+            margin-right: 0;
+        }
+        .list .item p {
+            position: relative;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .list .item p:before {
+            content: "□";
+            margin-right: 3px;
+            font-size: 24px;
+        }
+        .list .item p.checked {
+            font-weight: bold;
+        }
+        .list .item p.checked:before {
+            content: "√";
+            font-size: 24px;
+        }
+        .bottom {
+            margin-top: 20px;
+        }
+        .bottom .item {
+            display: inline-block;
+            position: relative;
+            width: 49%;
+            height: 180px;
+            vertical-align: top;
+        }
+        .bottom .item p {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        .bottom .item .date {
+            position: absolute;
+            left: 240px;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="conatiner">
+        <h1>商 标 代 理 委 托 书</h1>
+        <div class="top">
+            委托人 <input type="text" > 是 <input type="text" > 国籍、
+            依 <input type="text" > 法律组成，现委托 <input type="text" value="北京梦知网科技有限公司"> 代理
+            <input type="text" > 商标的如下“√”事宜。
+        </div>
+        <div class="list">
+            <div class="item">
+                <p>商标注册申请</p>
+                <p>商标异议申请</p>
+                <p>商标异议答辩</p>
+                <p>更正商标申请/注册事项申请</p>
+                <p>变更商标申请人/注册人名义/地址 变更集体商标/证明商标管理规则/集体成员名单申请</p>
+                <p>变更商标代理人/文件接收人申请</p>
+                <p>删减商品/服务项目申请</p>
+                <p>商标续展注册申请</p>
+                <p class="checked">转让/移转申请/注册商标申请书</p>
+                <p>商标使用许可备案</p>
+                <p>变更许可人/被许可人名称备案</p>
+                <p>商标使用许可提前终止备案</p>
+                <p>商标专用权质权登记申请</p>
+                <p>商标专用权质权登记事项变更申请</p>
+                <p>商标专用权质权登记期限延期申请</p>
+                <p>商标专用权质权登记证补发申请</p>
+                <p>商标专用权质权登记注销申请</p>
+                <p>商标注销申请</p>
+                <p>撤销连续三年不使用注册商标申请</p>
+                <p>撤销成为商品/服务通用名称注册商标申请</p>
+                <p>撤销连续三年不使用注册商标提供证据</p>
+            </div>
+            <div class="item">
+                <p>撤销成为商品/服务通用名称注册商标答辩</p>
+                <p>补发变更/转让/续展证明申请</p>
+                <p>补发商标注册证申请</p>
+                <p>出具商标注册证明申请</p>
+                <p>出具优先权证明文件申请</p>
+                <p>撤回商标注册申请</p>
+                <p>撤回商标异议申请</p>
+                <p>撤回变更商标申请人/注册人名义/地址 变更集体商标/证明商标管理规则/集体成员名单申请</p>
+                <p>撤回变更商标代理人/文件接收人申请</p>
+                <p>撤回删减商品/服务项目申请</p>
+                <p>撤回商标续展注册申请</p>
+                <p>撤回转让/移转申请/注册商标申请</p>
+                <p>撤回商标使用许可备案</p>
+                <p>撤回商标注销申请</p>
+                <p>撤回撤销连续三年不使用注册商标申请</p>
+                <p>撤回撤销成为商品/服务通用名称注册商标申请</p>
+                <p>其他<input type="text" ></p>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="item">
+                <p>委托人地址：<input type="text" ></p>
+                <p>联&nbsp;&nbsp;系&nbsp;&nbsp;人：<input type="text" ></p>
+                <p>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：<input type="text" ></p>
+                <p>邮政编码：<input type="text" ></p>
+            </div>
+            <div class="item">
+                <p>委托人章戳</p>
+                <p class="date">年&nbsp;&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;&nbsp;日</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
