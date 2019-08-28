@@ -1,7 +1,7 @@
 import threading
 import time
 import queue
-import scripts.steam as steam
+import steam as steam
 
 
 # 多线程爬取数据
