@@ -4,3 +4,5 @@
 .buildpath
 libs/__pycache__
 
+dist
+build
